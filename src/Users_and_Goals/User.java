@@ -1,5 +1,6 @@
 package Users_and_Goals;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
@@ -49,8 +50,7 @@ public class User {
 
     //TODO: reimplement default constructor
 
-    //region
-    //Gets and Sets
+    //region Gets and Sets
 
 
     public long getUserID() {
@@ -126,9 +126,38 @@ public class User {
 
     //endregion
 
-    // Functions
-    //region
+
+    //region Functions
     //TODO: implement a function that penalizes going into the negatives in your balance. Like a true banking app heheh
+
+    //user verification, username and password must be exact.
+    public boolean userNameVerify(String input)
+    {
+        return input == this.getUsername();
+    }
+    public boolean passwordVerify(String input)
+    {
+        return input == this.getPassword();
+    }
+
+    public boolean userVerify(String uInput, String pInput)
+    {
+        boolean validUser = false;
+        boolean validUsername = userNameVerify(uInput);
+        if(validUsername)
+        {
+            boolean validPassword = passwordVerify(pInput);
+            if(validPassword)
+            {
+                validUser = true;
+            }else{
+                System.out.println("Password is incorrect");
+            }
+        }else{
+            System.out.println("Username is incorrect");
+        }
+        return validUser;
+    }
 
     //endregion
 
