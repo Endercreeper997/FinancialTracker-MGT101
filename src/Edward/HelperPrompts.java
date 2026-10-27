@@ -1,3 +1,5 @@
+package Edward;
+
 import java.io.BufferedReader;
 //import java.io.Console;
 import java.io.IOException;
@@ -6,9 +8,10 @@ import java.io.InputStreamReader;
 public class HelperPrompts {
     public static BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
-    public static int promptForInt(String prompt) {
+    public static int promptForInt(String prompt, int max, int min) {
         boolean invalidInput = true;
         String input = "";
+        int userNum = 0;
         do {
             System.out.println(prompt);
             try {
@@ -19,13 +22,20 @@ public class HelperPrompts {
 
             if (input == null || input.isBlank()) {
                 System.out.println("That input is invalid. Please try again.");
+                continue;
+            }
+
+            userNum = Integer.parseInt(input);
+
+            if (userNum > max || userNum < min) {
+                System.out.println("That input is invalid. Please try again.");
             } else{
                 invalidInput = false;
             }
 
         } while (invalidInput);
 
-        return Integer.parseInt(input);
+        return userNum;
     }
 
     public static float promptForFloat(String prompt){
