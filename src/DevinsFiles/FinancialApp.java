@@ -4,11 +4,13 @@ import Users_and_Goals.User;
 
 import java.util.ArrayList;
 
-import static DevinsFiles.AppUI.*;
-import static Edward.HelperPrompts.*;
+//import static DevinsFiles.AppUI.*;
+//import static Edward.HelperPrompts.*;
 //import static Users_and_Goals.User.*;
 
 public class FinancialApp {
+
+    /*
     public static void VarifyUserPass(){
         greetings();
         ArrayList<User> users = new ArrayList<>();
@@ -72,4 +74,5 @@ public class FinancialApp {
     public static void getEntryInput(){
 
     }
+     */
 }
