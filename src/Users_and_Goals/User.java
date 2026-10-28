@@ -47,8 +47,7 @@ public class User {
         setGoldStars(0);
         setCurrentGoal(null);
     }
-
-    //TODO: reimplement default constructor
+    public User(){}
 
     //region Gets and Sets
 
@@ -128,7 +127,14 @@ public class User {
 
 
     //region Functions
-    //TODO: implement a function that penalizes going into the negatives in your balance. Like a true banking app heheh
+
+    public void negativePenaltyCheck()
+    {
+        //penalizes you if your balance is below 0, -10$
+        if(this.getBalance().floatValue() < 0.0) {
+            balance.subtract(BigDecimal.valueOf(10.0));
+        }
+    }
 
     //user verification, username and password must be exact.
     public boolean userNameVerify(String input)
