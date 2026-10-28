@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import Financial_History.HistoryClass;
 
 public class User {
     //region
@@ -25,7 +26,7 @@ public class User {
     private String username;
     private String password;
     private BigDecimal balance; //up to 2 decimals
-    private List<String> history = new ArrayList<>();
+    private List<HistoryClass> history = new ArrayList<>(); //Use the class instead of a string to pull data from the class. -WR
     private int goldStars;
     private FinancialGoal currentGoal;
 
@@ -92,11 +93,16 @@ public class User {
         this.balance = decimalFl;
     }
 
-    public List<String> getHistory() {
+    //Used to adjust the current balance for users. -WR
+    public void adjustBalance(BigDecimal amount) {
+        this.balance = this.balance.add(amount).setScale(2, RoundingMode.HALF_EVEN);
+    }
+
+    public List<HistoryClass> getHistory() {
         return this.history;
     }
 
-    private void setHistory(List<String> history) {
+    private void setHistory(List<HistoryClass> history) {
         if (history == null) {
             throw new IllegalArgumentException("Financial History cannot be null");
         }
@@ -133,11 +139,15 @@ public class User {
     //user verification, username and password must be exact.
     public boolean userNameVerify(String input)
     {
-        return input == this.getUsername();
+        //Use .equals instead of ==
+        //== compares references, not content. -WR
+        return input.equals(this.getUsername());
     }
     public boolean passwordVerify(String input)
     {
-        return input == this.getPassword();
+        //Use .equals instead of ==
+        //== compares references, not content. -WR
+        return input.equals(this.getPassword());
     }
 
     public boolean userVerify(String uInput, String pInput)

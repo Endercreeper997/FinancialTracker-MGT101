@@ -38,6 +38,10 @@ public class AppUI {
         System.out.println("Of course, please enter your information: ");
     }
 
+    // TODO (for AppUI owner): HistoryClass stores one transaction per entry, with
+    // fields: type (INCOME/EXPENSE/PURCHASE), amount, date, description, optional goal.
+    // Suggest changing makeEntry* prompts to ask for those instead of separate
+    // Income / Expenses / Purchases fields. -WR
     public static void makeEntryDate(){
         System.out.println("1. Date: ");
     }
