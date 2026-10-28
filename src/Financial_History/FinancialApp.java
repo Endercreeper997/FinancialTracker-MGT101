@@ -1,11 +1,25 @@
 package Financial_History;
 
 import AppUI.AppUI;
+import Edward.HelperPrompts;
+import Users_and_Goals.User;
 
 public class FinancialApp {
 
     static AppUI appUI = new AppUI();
+public void promptUser(){
+    AppUI.greetings();
+    AppUI.theStart();
+    boolean signInOrUp = HelperPrompts.promptForBool("signing in", "signing up");
+    if(signInOrUp){
+        AppUI.askForUserName();
+        String user = HelperPrompts.promptForInput();
+        AppUI.askForPassword();
+        String pass = HelperPrompts.promptForInput();
 
+
+    }
+}
 
 
 
