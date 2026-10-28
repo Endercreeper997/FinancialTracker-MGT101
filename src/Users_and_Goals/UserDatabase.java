@@ -55,4 +55,15 @@ public class UserDatabase {
 
     }
 
+    public User checkAllUsersLogin(String uInput, String pInput) {
+        for (User user : users) {
+            boolean returnUser = user.userVerify(uInput, pInput);
+            if (returnUser) {
+                return user;
+            }
+        }
+
+        return null;
+    }
+
 }
