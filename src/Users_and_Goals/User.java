@@ -90,6 +90,10 @@ public class User {
         BigDecimal decimalFl = new BigDecimal(balance).setScale(2, RoundingMode.HALF_EVEN);
         this.balance = decimalFl;
     }
+    private void setBalance(BigDecimal balance) {
+        BigDecimal decimalFl = balance.setScale(2, RoundingMode.HALF_EVEN);
+        this.balance = decimalFl;
+    }
 
     public List<String> getHistory() {
         return this.history;
@@ -163,6 +167,18 @@ public class User {
             System.out.println("Username is incorrect");
         }
         return validUser;
+    }
+
+    public void increaseBalance(float input)
+    {
+        BigDecimal decimalBig = BigDecimal.valueOf(input);
+        setBalance(getBalance().add(decimalBig));
+    }
+
+    public void decreaseBalance(float input)
+    {
+        BigDecimal decimalBig = BigDecimal.valueOf(input);
+        setBalance(getBalance().subtract(decimalBig));
     }
 
     //endregion
