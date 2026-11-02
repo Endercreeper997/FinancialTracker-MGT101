@@ -48,8 +48,7 @@ public class User {
         setGoldStars(0);
         setCurrentGoal(null);
     }
-
-    //TODO: reimplement default constructor
+    public User(){}
 
     //region Gets and Sets
 
@@ -90,6 +89,10 @@ public class User {
 
     private void setBalance(float balance) {
         BigDecimal decimalFl = new BigDecimal(balance).setScale(2, RoundingMode.HALF_EVEN);
+        this.balance = decimalFl;
+    }
+    private void setBalance(BigDecimal balance) {
+        BigDecimal decimalFl = balance.setScale(2, RoundingMode.HALF_EVEN);
         this.balance = decimalFl;
     }
 
@@ -134,7 +137,14 @@ public class User {
 
 
     //region Functions
-    //TODO: implement a function that penalizes going into the negatives in your balance. Like a true banking app heheh
+
+    public void negativePenaltyCheck()
+    {
+        //penalizes you if your balance is below 0, -10$
+        if(this.getBalance().floatValue() < 0.0) {
+            balance.subtract(BigDecimal.valueOf(10.0));
+        }
+    }
 
     //user verification, username and password must be exact.
     public boolean userNameVerify(String input)
@@ -167,6 +177,18 @@ public class User {
             System.out.println("Username is incorrect");
         }
         return validUser;
+    }
+
+    public void increaseBalance(float input)
+    {
+        BigDecimal decimalBig = BigDecimal.valueOf(input);
+        setBalance(getBalance().add(decimalBig));
+    }
+
+    public void decreaseBalance(float input)
+    {
+        BigDecimal decimalBig = BigDecimal.valueOf(input);
+        setBalance(getBalance().subtract(decimalBig));
     }
 
     //endregion

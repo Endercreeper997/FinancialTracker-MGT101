@@ -9,7 +9,7 @@ public class UserDatabase {
 
     List<User> users;
 
-    UserDatabase() {
+    public UserDatabase() {
         setUsers(new ArrayList<>());
     }
 
@@ -53,6 +53,17 @@ public class UserDatabase {
         this.addUser(testUser);
         System.out.println("Test users successfully added");
 
+    }
+
+    public User checkAllUsersLogin(String uInput, String pInput) {
+        for (User user : users) {
+            boolean returnUser = user.userVerify(uInput, pInput);
+            if (returnUser) {
+                return user;
+            }
+        }
+
+        return null;
     }
 
 }
