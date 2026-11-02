@@ -1,4 +1,4 @@
-package DevinsFiles;
+package AppUI;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,6 +10,12 @@ public class AppUI {
     public static void greetings(){
         System.out.println("Welcome to the Financial Tracker App, I hope you are having a wonderful day.");
     }
+
+    public static void theStart(){
+        System.out.println("Are you signing in, or signing up with a new user?.");
+    }
+
+
 
 
     public static void askForUserName(){
@@ -58,6 +64,12 @@ public class AppUI {
     public static void exitMenu(){
         System.out.println("Very well, thank you for your visit and please come again!");
     }
+
+    public static void reachedGoal(){
+        System.out.println("Congratulations! You have reached your goal of $");
+    }
+
+
 
 
 

@@ -9,7 +9,7 @@ public class UserDatabase {
 
     List<User> users;
 
-    UserDatabase() {
+    public UserDatabase() {
         setUsers(new ArrayList<>());
     }
 

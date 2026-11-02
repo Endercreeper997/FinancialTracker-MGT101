@@ -1,3 +1,5 @@
+package Edward;
+
 import java.io.BufferedReader;
 //import java.io.Console;
 import java.io.IOException;
@@ -6,11 +8,10 @@ import java.io.InputStreamReader;
 public class HelperPrompts {
     public static BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
-    public static int promptForInt(String prompt) {
+    public static int promptForInt(int min, int max) {
         boolean invalidInput = true;
         String input = "";
         do {
-            System.out.println(prompt);
             try {
                 input = read.readLine();
             } catch (IOException e) {
@@ -20,7 +21,12 @@ public class HelperPrompts {
             if (input == null || input.isBlank()) {
                 System.out.println("That input is invalid. Please try again.");
             } else{
-                invalidInput = false;
+                int intIn = Integer.parseInt(input);
+                if(intIn > max || intIn < min){
+                    System.out.println("That input is above the max or below the min. Please try again.");
+                } else{
+                    invalidInput = false;
+                }
             }
 
         } while (invalidInput);
@@ -28,11 +34,10 @@ public class HelperPrompts {
         return Integer.parseInt(input);
     }
 
-    public static float promptForFloat(String prompt){
+    public static float promptForFloat(float min, float max){
         boolean invalidInput = true;
         String input = "";
         do {
-            System.out.println(prompt);
             try {
                 input = read.readLine();
             } catch (IOException e) {
@@ -42,7 +47,12 @@ public class HelperPrompts {
             if (input == null || input.isBlank()) {
                 System.out.println("That input is invalid. Please try again.");
             } else{
-                invalidInput = false;
+                float floatIn = Float.parseFloat(input);
+                if(floatIn > max || floatIn < min){
+                    System.out.println("That input is above the max or below the min. Please try again.");
+                } else {
+                    invalidInput = false;
+                }
             }
 
         } while (invalidInput);
@@ -50,12 +60,11 @@ public class HelperPrompts {
         return Float.parseFloat(input);
     }
 
-    public static boolean promptForBool(String prompt, String trueString, String falseString){
+    public static boolean promptForBool(String trueString, String falseString){
         boolean invalidInput = true;
         String input = "";
         boolean returnBool = false;
         do {
-            System.out.println(prompt);
             try {
                 input = read.readLine();
             } catch (IOException e) {
@@ -80,11 +89,10 @@ public class HelperPrompts {
         return returnBool;
     }
 
-    public static String promptForInput(String prompt){
+    public static String promptForInput(){
         boolean invalidInput = true;
         String input = "";
         do {
-            System.out.println(prompt);
             try {
                 input = read.readLine();
             } catch (IOException e) {
