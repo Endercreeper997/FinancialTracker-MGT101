@@ -11,9 +11,8 @@ import Users_and_Goals.UserDatabase;
 
 public class FinancialApp {
 
-    static AppUI appUI = new AppUI();
-    UserDatabase ud = new UserDatabase();
-    public void promptUser(){
+    static UserDatabase ud = new UserDatabase();
+    public static void promptUser(){
         boolean invalidUser = false;
 
         AppUI.greetings();
@@ -43,7 +42,7 @@ public class FinancialApp {
         }
     }
 
-    public void mainMenuAppear(User user){
+    public static void mainMenuAppear(User user){
         AppUI.mainMenu();
         int input = HelperPrompts.promptForInt(1, 4);
         switch (input){
@@ -58,6 +57,7 @@ public class FinancialApp {
                 AppUI.viewStarsMenu();
                 int stars = user.getGoldStars();
                 System.out.println("Stars: " + stars);
+                mainMenuAppear(user);
                 break;
             case 4:
                 AppUI.exitMenu();
@@ -65,7 +65,7 @@ public class FinancialApp {
         }
     }
 
-    public void entryMenu(User user){
+    public static void entryMenu(User user){
         HistoryClass.EntryType type;
         BigDecimal bigDecAmount;
         String desc;
@@ -105,6 +105,7 @@ public class FinancialApp {
         addEntry(user, entry);
 
         possibleReward(user);
+        mainMenuAppear(user);
     }
 
     public static boolean checkForGoal(){
@@ -139,6 +140,8 @@ public class FinancialApp {
         for (int i = 0; i < history.size(); i++) {
             System.out.println((i + 1) + ". " + history.get(i));
         }
+
+        mainMenuAppear(user);
     }
 
     public static BigDecimal totalByType(User user, HistoryClass.EntryType type) {
