@@ -87,7 +87,9 @@ public class FinancialApp {
         String purchases = HelperPrompts.promptForInput();
 
         if(expenses > 0){
-            if(purchases.isBlank()){
+            if(purchases.equalsIgnoreCase("None")
+                    || purchases.equalsIgnoreCase("N/A")
+                    || purchases.equalsIgnoreCase("No Purchases")){
                 type = HistoryClass.EntryType.EXPENSE;
                 desc = "Daily Expenses";
             } else{
