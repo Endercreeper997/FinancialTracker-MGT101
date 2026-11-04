@@ -66,6 +66,9 @@ public class FinancialApp {
     }
 
     public void entryMenu(User user){
+        HistoryClass.EntryType type;
+        BigDecimal bigDecAmount;
+        String desc;
         AppUI.makeEntryMenu();
 
         AppUI.makeEntryDate();
@@ -83,7 +86,23 @@ public class FinancialApp {
         AppUI.makeEntryPurchases();
         String purchases = HelperPrompts.promptForInput();
 
-        //TODO: Make a History Ticket
+        if(expenses > 0){
+            if(purchases.isBlank()){
+                type = HistoryClass.EntryType.EXPENSE;
+                desc = "Daily Expenses";
+            } else{
+                type = HistoryClass.EntryType.PURCHASE;
+                desc = "Groceries";
+            }
+            bigDecAmount = BigDecimal.valueOf(-expenses);
+        } else {
+            type = HistoryClass.EntryType.INCOME;
+            desc = "Job Income";
+            bigDecAmount = BigDecimal.valueOf(+income);
+        }
+
+        HistoryClass entry = new HistoryClass(realDate, type, bigDecAmount, desc);
+        addEntry(user, entry);
 
         possibleReward(user);
     }
